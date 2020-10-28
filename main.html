@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="ludo1.css">
+</head>
+<body>
+        <div class="dice-div">
+                
+                <div id="din-g" class="din">
+                        <div id="dice-g" class="dice" onclick="changeActive();">
+                                <div id="dotg-1" class="dots"></div>
+                                <div id="dotg-2"  class="dots"></div>
+                                <div id="dotg-3" class="dots"></div>
+                                <div id="dotg-4" class="dots"></div>
+                                <div id="dotg-5" class="dots"></div>
+                                <div id="dotg-6" class="dots"></div>
+                        </div>
+
+                </div>
+                <div id="din-y" class="din">
+                        <div id="dice-y" class="dice" onclick="changeActive();">
+                                <div id="doty-1" class="dots"></div>
+                                <div id="doty-2"  class="dots"></div>
+                                <div id="doty-3" class="dots"></div>
+                                <div id="doty-4" class="dots"></div>
+                                <div id="doty-5" class="dots"></div>
+                                <div id="doty-6" class="dots"></div>
+                        </div>
+
+                </div>
+            </div>
+    
+        <div class="game">
+                <div class="house green">
+                    <div class="box">
+                        <div class="square square-one green"><div id="g1" class="cir bg-success" onclick="move();"></div></div>
+                        <div class="square square-two green"><div  id="g2" class="cir bg-success" onclick="move();"></div></div>
+                        <div class="square square-three green"><div id="g3" class="cir bg-success" onclick="move();"></div></div>
+                        <div class="square square-four green"><div id="g4" class="cir bg-success" onclick="move();"></div></div>
+                    </div>
+                </div>
+            
+                <div class="house yellow" style="right: 0">
+                    <div class="box">
+                        <div class="square square-one yellow"><div class="cir bg-warnning"></div></div>
+                        <div class="square square-two yellow"><div class="cir bg-warnning"></div></div>
+                        <div class="square square-three yellow"><div class="cir bg-warnning"></div></div>
+                        <div class="square square-four yellow"><div class="cir bg-warnning"></div></div>
+                    </div>
+                </div>
+            
+                <div class="house red" style="bottom: 0">
+                    <div class="box">
+                        <div class="square square-one red"><div class="cir bg-danger"></div></div>
+                        <div class="square square-two red"><div class="cir bg-danger"></div></div>
+                        <div class="square square-three red"><div class="cir bg-danger"></div></div>
+                        <div class="square square-four red"><div class="cir bg-danger"></div></div>
+                    </div>
+                </div>
+            
+                <div class="house blue" style="bottom: 0;right: 0">
+                    <div class="box">
+                        <div class="square square-one blue"><div class="cir bg-primary"></div></div>
+                        <div class="square square-two blue"><div class="cir bg-primary"></div></div>
+                        <div class="square square-three blue"><div class="cir bg-primary"></div></div>
+                        <div class="square square-four blue"><div class="cir bg-primary"></div></div>
+                    </div>
+                </div>
+            
+                <div class="home"></div>
+                <div  id="c-1" class="cells" style="top: 40%;"></div>
+                <div  id="c-2" class="cells g-start" style="top: 40%;left:6.66%;"></div>
+                <div  id="c-3" class="cells" style="top: 40%;left:13.32%;"></div>
+                <div  id="c-4" class="cells" style="top: 40%;left:19.98%;"></div>
+                <div  id="c-5" class="cells" style="top: 40%;left:26.64%;"></div>
+                <div  id="c-6" class="cells" style="top: 40%;left:33.3%;"></div>
+        
+                <div  id="c-7" class="cells" style="top: 0;left:40%;"></div>
+                <div  id="c-8" class="cells" style="top: 6.66%;left:40%;"></div>
+                <div  id="c-9" class="cells safe" style="top: 13.32%;left:40%;"></div>
+                <div  id="c-10" class="cells" style="top: 19.98%;left:40%;"></div>
+                <div  id="c-11" class="cells" style="top: 26.64%;left:40%;"></div>
+                <div  id="c-12" class="cells" style="top: 33.3%;left:40%;"></div>
+            
+                <div  id="c-13" class="cells" style="top: 0;left:46.66%;"></div>
+                <div  id="c-14" class="cells yellow" style="top: 6.66%;left:46.66%;"></div>
+                <div  id="c-15" class="cells yellow" style="top: 13.32%;left:46.66%;"></div>
+                <div  id="c-16" class="cells yellow" style="top: 19.98%;left:46.66%;"></div>
+                <div  id="c-17" class="cells yellow" style="top: 26.64%;left:46.66%;"></div>
+                <div  id="c-18" class="cells yellow" style="top: 33.3%;left:46.66%;"></div>
+            
+                <div  id="c-19" class="cells" style="top: 0;left:53.32%;"></div>
+                <div  id="c-20" class="cells y-start" style="top: 6.66%;left:53.32%;"></div>
+                <div  id="c-21" class="cells" style="top: 13.32%;left:53.32%;"></div>
+                <div  id="c-22" class="cells" style="top: 19.98%;left:53.32%;"></div>
+                <div  id="c-23" class="cells" style="top: 26.64%;left:53.32%;"></div>
+                <div  id="c-24" class="cells" style="top: 33.3%;left:53.32%;"></div>
+            
+                <div  id="c-25" class="cells" style="top: 40%; right: 33.3%"></div>
+                <div  id="c-26" class="cells" style="top: 40%;right:26.64%;"></div>
+                <div  id="c-27" class="cells" style="top: 40%;right:19.98%;"></div>
+                <div  id="c-28" class="cells safe" style="top: 40%;right:13.32%;"></div>
+                <div  id="c-29" class="cells" style="top: 40%;right:6.66%;"></div>
+                <div  id="c-30" class="cells" style="top: 40%;right:0;"></div>
+            
+                <div  id="c-31" class="cells blue" style="top: 46.66%; right: 33.3%"></div>
+                <div  id="c-32" class="cells blue" style="top: 46.66%;right:26.64%;"></div>
+                <div  id="c-33" class="cells blue" style="top: 46.66%;right:19.98%;"></div>
+                <div  id="c-34" class="cells blue" style="top: 46.66%;right:13.32%;"></div>
+                <div  id="c-35" class="cells blue" style="top: 46.66%;right:6.66%;"></div>
+                <div  id="c-36" class="cells" style="top: 46.66%;right:0;"></div>
+            
+                <div  id="c-37" class="cells" style="top: 53.32%; right: 33.3%"></div>
+                <div  id="c-38" class="cells" style="top: 53.32%;right:26.64%;"></div>
+                <div  id="c-39" class="cells" style="top: 53.32%;right:19.98%;"></div>
+                <div  id="c-40" class="cells" style="top: 53.32%;right:13.32%;"></div>
+                <div  id="c-41" class="cells b-start" style="top: 53.32%;right:6.66%;"></div>
+                <div  id="c-42" class="cells" style="top: 53.32%;right:0;"></div>
+            
+                <div  id="c-43" class="cells" style="bottom: 0;left:53.32%;"></div>
+                <div  id="c-44" class="cells" style="bottom: 6.66%;left:53.32%;"></div>
+                <div  id="c-45" class="cells safe" style="bottom: 13.32%;left:53.32%;"></div>
+                <div  id="c-46" class="cells" style="bottom: 19.98%;left:53.32%;"></div>
+                <div  id="c-47" class="cells" style="bottom: 26.64%;left:53.32%;"></div>
+                <div  id="c-48" class="cells" style="bottom: 33.3%;left:53.32%;"></div>
+            
+                <div  id="c-49" class="cells" style="bottom: 0;left:46.66%;"></div>
+                <div  id="c-50" class="cells red " style="bottom: 6.66%;left:46.66%;"></div>
+                <div  id="c-51" class="cells red" style="bottom: 13.32%;left:46.66%;"></div>
+                <div  id="c-52" class="cells red" style="bottom: 19.98%;left:46.66%;"></div>
+                <div  id="c-53" class="cells red" style="bottom: 26.64%;left:46.66%;"></div>
+                <div  id="c-54" class="cells red" style="bottom: 33.3%;left:46.66%;"></div>
+            
+                <div  id="c-55" class="cells" style="bottom: 0;left:40%;"></div>
+                <div  id="c-56" class="cells r-start" style="bottom: 6.66%;left:40%;"></div>
+                <div  id="c-57" class="cells" style="bottom: 13.32%;left:40%;"></div>
+                <div  id="c-58" class="cells" style="bottom: 19.98%;left:40%;"></div>
+                <div  id="c-59" class="cells" style="bottom: 26.64%;left:40%;"></div>
+                <div  id="c-60" class="cells" style="bottom: 33.3%;left:40%;"></div>
+            
+                <div  id="c-61" class="cells" style="top: 53.32%; left: 33.3%"></div>
+                <div  id="c-62" class="cells" style="top: 53.32%;left:26.64%;"></div>
+                <div  id="c-63" class="cells" style="top: 53.32%;left:19.98%;"></div>
+                <div  id="c-64" class="cells safe" style="top: 53.32%;left:13.32%;"></div>
+                <div  id="c-65" class="cells" style="top: 53.32%;left:6.66%;"></div>
+                <div  id="c-66" class="cells" style="top: 53.32%;left:0;"></div>
+            
+                <div  id="c-67" class="cells green" style="top: 46.66%;left: 33.3%"></div>
+                <div  id="c-68" class="cells green" style="top: 46.66%;left:26.64%;"></div>
+                <div  id="c-69" class="cells green" style="top: 46.66%;left:19.98%;"></div>
+                <div  id="c-70" class="cells green" style="top: 46.66%;left:13.32%;"></div>
+                <div  id="c-71" class="cells green" style="top: 46.66%;left:6.66%;"></div>
+                <div  id="c-72" class="cells" style="top: 46.66%;left:0;"></div>
+            
+            
+            </div>
+            <div class="dice-div">
+                
+                <div id="din-r"class="din">
+                        <div id="dice-r" class="dice" onclick="changeActive();">
+                                <div id="dotr-1" class="dots"></div>
+                                <div id="dotr-2"  class="dots"></div>
+                                <div id="dotr-3" class="dots"></div>
+                                <div id="dotr-4" class="dots"></div>
+                                <div id="dotr-5" class="dots"></div>
+                                <div id="dotr-6" class="dots"></div>
+                        </div>
+
+                </div>
+                <div id="din-b" class="din">
+                        <div id="dice-b" class="dice" onclick="changeActive();">
+                                <div id="dotb-1" class="dots"></div>
+                                <div id="dotb-2"  class="dots"></div>
+                                <div id="dotb-3" class="dots"></div>
+                                <div id="dotb-4" class="dots"></div>
+                                <div id="dotb-5" class="dots"></div>
+                                <div id="dotb-6" class="dots"></div>
+                        </div>
+
+                </div>
+            </div>
+
+            <script src="ludo.js"></script>
+    
+</body>
+</html>
