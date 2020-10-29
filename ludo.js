@@ -59,7 +59,10 @@ var moves=[0,0,0,0];
 
 //Dice roll fuction to get a random number
 
-var posdice=0;
+var posdiceg=0;
+var posdicer=0;
+var posdicey=0;
+var posdiceb=0;
 
 
 function diceRoll(current){
@@ -78,28 +81,30 @@ function diceRoll(current){
         }
 
      }
-     posdice= random;
+     if(current === 'din-g')
+     {
+        posdiceg=random;
+     }
+     else if(current === 'din-y'){
+         posdicey=random;
+     }
+     else if(current === 'din-r'){
+        posdicer=random;
+    }
+    else if(current === 'din-b'){
+        posdiceb=random;
+    }
+     
 
             
 
 }
 
-// var ele=document.createElement('div');
-// ele.id='g1';
-// ele.classList.add("cir");
-// ele.classList.add("g");
-// ele.classList.add("bg-success");
-// ele.onclick=move;
-
-
-
-
-
     function move(id,name){
 
 
         if(id === 'g'){
-            if(gstate[name]=== -1 && posdice === 6){
+            if(gstate[name]=== -1 && posdiceg === 6){
                 console.log("move clicked");
                 console.log(gstate[name]);
         
@@ -110,13 +115,15 @@ function diceRoll(current){
                     pos=gpath[0];
                     document.getElementById('c-'+pos).appendChild(item1);
                     gstate[name]=0;
+                    posdiceg=0;
                 }
                 else if(gstate[name]=== -1){
+                    posdiceg=0;
 
                 }
                 else{
-                    console.log(posdice);
-                    var pos=gstate[name]+posdice;
+                    console.log(posdiceg);
+                    var pos=gstate[name]+posdiceg;
                     var item=document.getElementById(name);
                     var item1=item;
                     var newPos=gpath[pos];
@@ -124,13 +131,13 @@ function diceRoll(current){
                 document.getElementById('c-'+newPos).appendChild(item1);
                 gstate[name]=pos;
                     console.log(gstate[name]);
-                    posdice=0;
+                    posdiceg=0;
 
                 }
             }
             else if (id ==='b'){
 
-                if(bstate[name] === -1 && posdice === 6){
+                if(bstate[name] === -1 && posdiceb === 6){
                     var item=document.getElementById(name);
                 var item1=item;
                 item.remove();
@@ -138,13 +145,15 @@ function diceRoll(current){
                     pos=bpath[0];
                 document.getElementById('c-'+pos).appendChild(item1);
                 bstate[name]=0;
+                posdiceb=0;
 
                 }else if(bstate[name]=== -1){
+                    posdiceb=0;
                     
                 }
                 else{
-                    console.log(posdice);
-                var pos=bstate[name]+posdice;
+                    console.log(posdiceb);
+                var pos=bstate[name]+posdiceb;
                     var item=document.getElementById(name);
                     var item1=item;
                     var newPos=bpath[pos];
@@ -152,7 +161,7 @@ function diceRoll(current){
                     document.getElementById('c-'+newPos).appendChild(item1);
                     bstate[name]=pos;
                     console.log(bstate[name]);
-                    posdice=0;
+                    posdiceb=0;
 
                 }
 
@@ -160,7 +169,7 @@ function diceRoll(current){
             }
             else if (id ==='r'){
 
-                if(rstate[name] === -1 && posdice === 6){
+                if(rstate[name] === -1 && posdicer === 6){
                     var item=document.getElementById(name);
                 var item1=item;
                 item.remove();
@@ -168,15 +177,17 @@ function diceRoll(current){
                     pos=rpath[0];
                     document.getElementById('c-'+pos).appendChild(item1);
                     rstate[name]=0;
+                    posdicer=0;
 
                 }
                 else if(rstate[name]=== -1){
+                    posdicer=0;
                     
                 }
                 else{
 
-                    console.log(posdice);
-                var pos=rstate[name]+posdice;
+                    console.log(posdicer);
+                var pos=rstate[name]+posdicer;
                     var item=document.getElementById(name);
                     var item1=item;
                     var newPos=rpath[pos];
@@ -184,13 +195,13 @@ function diceRoll(current){
                 document.getElementById('c-'+newPos).appendChild(item1);
                 rstate[name]=pos;
                     console.log(rstate[name]);
-                    posdice=0;
+                    posdicer=0;
 
                 }
             }
             else if (id ==='y'){
 
-                if(ystate[name] === -1 && posdice === 6){
+                if(ystate[name] === -1 && posdicey === 6){
                     var item=document.getElementById(name);
                 var item1=item;
                 item.remove();
@@ -198,14 +209,16 @@ function diceRoll(current){
                     pos=ypath[0];
                 document.getElementById('c-'+pos).appendChild(item1);
                 ystate[name]=0;
+                posdicey=0;
 
                 }else if(ystate[name]=== -1){
+                    posdicey=0;
                     
                 }
                 else{
 
-                    console.log(posdice);
-                var pos=ystate[name]+posdice;
+                    console.log(posdicey);
+                var pos=ystate[name]+posdicey;
                     var item=document.getElementById(name);
                     var item1=item;
                     var newPos=ypath[pos];
@@ -213,7 +226,7 @@ function diceRoll(current){
                 document.getElementById('c-'+newPos).appendChild(item1);
                 ystate[name]=pos;
                     console.log(ystate[name]);
-                    posdice=0;
+                    posdicey=0;
 
                 }
 
@@ -236,25 +249,9 @@ let id='dotg-';
 function changeActive(current){
 
     if(current === shadow){
-
-        var random=Math.floor(Math.random()*6+1);
-
-        
-        if(random ===6 ){
-            move(random);
+        if(posdice ===6 ){
         }
         else{
-
-            for(let i=1;i<=6;i++){
-                if(i>random)
-                {
-                    document.getElementById(id+i).style.display='none';
-                }
-                else{
-                    document.getElementById(id+i).style.display='block';
-                }
-                
-            }
             
             document.getElementById(shadow).style.boxShadow='none';
             if(diceNo<3)
