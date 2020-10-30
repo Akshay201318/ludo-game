@@ -63,6 +63,10 @@ var posdiceg=0;
 var posdicer=0;
 var posdicey=0;
 var posdiceb=0;
+var totalg=0;
+var totaly=0;
+var totalb=0;
+var totalr=0;
 
 
 function diceRoll(current){
@@ -84,15 +88,35 @@ function diceRoll(current){
      if(current === 'din-g')
      {
         posdiceg=random;
+        if(totalg <1 && posdiceg!== 6){
+            changeActive('din-g');
+            posdiceg=0;
+        }
+        
      }
      else if(current === 'din-y'){
          posdicey=random;
+         if(totaly <1 && posdicey!== 6){
+            changeActive('din-y');
+            posdicey=0;
+        }
+        
      }
      else if(current === 'din-r'){
         posdicer=random;
+        if(totalr <1 && posdicer!== 6){
+            changeActive('din-r');
+            posdicer=0;
+        }
+        
     }
     else if(current === 'din-b'){
         posdiceb=random;
+        if(totalb <1 && posdiceb!== 6){
+            changeActive('din-b');
+            posdiceb=0;
+        }
+        
     }
      
 
@@ -100,8 +124,8 @@ function diceRoll(current){
 
 }
 
-    function move(id,name){
-
+    function move(current,id,name){
+        console.log("move clicked");
 
         if(id === 'g'){
             if(gstate[name]=== -1 && posdiceg === 6){
@@ -116,8 +140,10 @@ function diceRoll(current){
                     document.getElementById('c-'+pos).appendChild(item1);
                     gstate[name]=0;
                     posdiceg=0;
+                    totalg++;
                 }
                 else if(gstate[name]=== -1){
+                    changeActive(current);
                     posdiceg=0;
 
                 }
@@ -131,6 +157,9 @@ function diceRoll(current){
                 document.getElementById('c-'+newPos).appendChild(item1);
                 gstate[name]=pos;
                     console.log(gstate[name]);
+                    if(posdiceg !== 6){
+                        changeActive(current);
+                    }
                     posdiceg=0;
 
                 }
@@ -146,8 +175,10 @@ function diceRoll(current){
                 document.getElementById('c-'+pos).appendChild(item1);
                 bstate[name]=0;
                 posdiceb=0;
+                totalb++;
 
                 }else if(bstate[name]=== -1){
+                    changeActive(current);
                     posdiceb=0;
                     
                 }
@@ -161,6 +192,9 @@ function diceRoll(current){
                     document.getElementById('c-'+newPos).appendChild(item1);
                     bstate[name]=pos;
                     console.log(bstate[name]);
+                    if(posdiceb !==6){
+                        changeActive(current);
+                    }
                     posdiceb=0;
 
                 }
@@ -178,9 +212,11 @@ function diceRoll(current){
                     document.getElementById('c-'+pos).appendChild(item1);
                     rstate[name]=0;
                     posdicer=0;
+                    totalr++;
 
                 }
                 else if(rstate[name]=== -1){
+                    changeActive(current);
                     posdicer=0;
                     
                 }
@@ -195,6 +231,9 @@ function diceRoll(current){
                 document.getElementById('c-'+newPos).appendChild(item1);
                 rstate[name]=pos;
                     console.log(rstate[name]);
+                    if(posdicer !== 6){
+                        changeActive(current);
+                    }
                     posdicer=0;
 
                 }
@@ -210,8 +249,10 @@ function diceRoll(current){
                 document.getElementById('c-'+pos).appendChild(item1);
                 ystate[name]=0;
                 posdicey=0;
+                totaly++;
 
                 }else if(ystate[name]=== -1){
+                    changeActive(current);
                     posdicey=0;
                     
                 }
@@ -226,6 +267,9 @@ function diceRoll(current){
                 document.getElementById('c-'+newPos).appendChild(item1);
                 ystate[name]=pos;
                     console.log(ystate[name]);
+                    if(posdicey !== 6){
+                        changeActive(current);
+                    }
                     posdicey=0;
 
                 }
@@ -249,9 +293,6 @@ let id='dotg-';
 function changeActive(current){
 
     if(current === shadow){
-        if(posdice ===6 ){
-        }
-        else{
             
             document.getElementById(shadow).style.boxShadow='none';
             if(diceNo<3)
@@ -283,13 +324,6 @@ function changeActive(current){
                 changeShadow(shadow);
         
             }
-        
-
-        }
-    
-    
-    
-    
 };
 
 
