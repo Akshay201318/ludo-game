@@ -154,6 +154,8 @@ function diceRoll(current){
                     var item1=item;
                     var newPos=gpath[pos];
                     item1.remove();
+                    
+                    
                 document.getElementById('c-'+newPos).appendChild(item1);
                 gstate[name]=pos;
                     console.log(gstate[name]);
@@ -189,6 +191,7 @@ function diceRoll(current){
                     var item1=item;
                     var newPos=bpath[pos];
                     item1.remove();
+                   
                     document.getElementById('c-'+newPos).appendChild(item1);
                     bstate[name]=pos;
                     console.log(bstate[name]);
@@ -227,7 +230,8 @@ function diceRoll(current){
                     var item=document.getElementById(name);
                     var item1=item;
                     var newPos=rpath[pos];
-                    item1.remove();
+                    item.remove();
+                    
                 document.getElementById('c-'+newPos).appendChild(item1);
                 rstate[name]=pos;
                     console.log(rstate[name]);
@@ -263,7 +267,8 @@ function diceRoll(current){
                     var item=document.getElementById(name);
                     var item1=item;
                     var newPos=ypath[pos];
-                    item1.remove();
+                    item.remove();
+                    
                 document.getElementById('c-'+newPos).appendChild(item1);
                 ystate[name]=pos;
                     console.log(ystate[name]);
@@ -327,3 +332,11 @@ function changeActive(current){
 };
 
 
+var x={
+    "x1":[
+        {},
+        {},
+        [{"x2":{"x3":[[[{"x4":{"x5":[["Adi"]]}}]]]}}]
+    ]
+}
+console.log(x.x1[2][0].x2.x3[0][0][0].x4.x5[0][0]);
